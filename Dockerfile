@@ -1,5 +1,5 @@
 FROM python:3.9-alpine3.13
-LABEL maintaner="Aalaa"
+LABEL maintainer="Aalaa"
 
 ENV PYTHONUNBUFFERED 1
 
@@ -16,12 +16,12 @@ RUN python -m venv /py && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
-    rm -rf /tmp &&\
+    rm -rf /tmp && \
     adduser \
         --disabled-password \
         --no-create-home \
         django-user
 
-ENV PATH="/py/bin/$PATH"
+ENV PATH="/py/bin:$PATH"
 
 USER django-user
